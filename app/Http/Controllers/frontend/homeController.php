@@ -32,8 +32,9 @@ class homeController extends Controller
 
  ////// blog page
     public function about(){
+        
         $brand_logo = category::select('name','logo')->whereNotNull('logo')->get();
-        return view('frontend.blog_page',compact(['brand_logo']));
+        return view('frontend.blog_page',compact(['brand_logo']))->withShortcodes();
     }
 
 }

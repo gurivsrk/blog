@@ -6,10 +6,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class menu extends Model
+class subcriber extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory,SoftDeletes;
 
-    protected $table ='menu';
+    protected $table = 'subscriber';
+
+    protected $fillable = [
+        'email',
+        'status'
+    ];
 
 }

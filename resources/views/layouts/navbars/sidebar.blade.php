@@ -25,6 +25,12 @@
             <p>{{ __('Blogs') }}</p>
         </a>
       </li>
+      <li class="nav-item{{@$activePage == 'menu' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('menu.index') }}">
+          <i class="material-icons">menu</i>
+            <p>{{ __('Menu') }}</p>
+        </a>
+      </li>
 
       <!-- <li class="nav-item {{ ($activePage == 'FormTable' ||@$activePage == 'allForm') ? ' active' : '' }}">
         <a class="nav-link   {{ ($activePage == 'FormTable' ||@$activePage == 'allForm') ? '' : 'collapsed' }}" data-toggle="collapse" href="#MFForms" aria-expanded="{{ ($activePage == 'FormTable' ||@$activePage == 'allForm') ? 'true' : 'false' }}">
@@ -50,6 +56,12 @@
           </ul>
         </div>
       </li> -->
+      <li class="nav-item{{@$activePage == 'subscriber' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('subscriber.index') }}">
+          <i class="material-icons">email</i>
+          <p>{{ __('Subscriber') }}</p>
+        </a>
+      </li>
       <li class="nav-item{{@$activePage == 'team' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('team.index') }}">
           <i class="material-icons">groups</i>

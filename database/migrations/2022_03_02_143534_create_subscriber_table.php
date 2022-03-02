@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBlogTable extends Migration
+class CreateSubscriberTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,10 @@ class CreateBlogTable extends Migration
      */
     public function up()
     {
-        Schema::create('blog', function (Blueprint $table) {
+        Schema::create('subscriber', function (Blueprint $table) {
             $table->id();
-            $table->string('title',100);
-            $table->string('sub_title',200)->nullable();
-            $table->string('blogImage',300);
-            $table->text('categories');
-            $table->text('tags');
-            $table->longText('descritption');
-            $table->enum('post_status',['enabled','disabled']);
+            $table->mediumText('email')->unique();
+            $table->enum('status',['pending','subscribe','unsubscribe']);
             $table->timestamps();
             $table->softDeletes();
         });
@@ -34,6 +29,6 @@ class CreateBlogTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('blog');
+        Schema::dropIfExists('subscriber');
     }
 }

@@ -16,6 +16,7 @@ class blogs extends Model
         protected $fillable = [
             'blogImage',
             'title',
+            'sub_title',
             'categories',
             'tags',
             'post_status',

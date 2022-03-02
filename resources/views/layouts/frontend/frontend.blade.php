@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <title>Blog</title>
-    <link rel="icon" href="#" type="image/png" sizes="16x16" />
+    <link rel="icon" href="{{asset(@$gd->favicon)}}" type="image/png" sizes="16x16" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" >
     <link rel="stylesheet/less" type="text/css" href="{{ asset('frontend/less/style.less') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/helper.css')}}" />
@@ -24,7 +24,7 @@
     <!-- navbar -->
     <nav id="navbar-main" class="navbar navbar-expand-lg navbar-light bg-white">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">LOGO</a>
+        <a class="navbar-brand" href="{{route('frontend.index')}}"><img src="{{asset(@$gd->website_logo)}}" class="img-fluid" alt="{{@$gd->website_title}} logo" width="200"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -68,7 +68,7 @@
           <div class="col-md-7">
             <div class="row">          
               <div class="col-lg-4">
-                <h1><a href="#">LOGO</a></h1>
+                <h1><a href="{{route('frontend.index')}}"><img src="{{asset(@$gd->website_logo)}}" class="img-fluid" alt="{{@$gd->website_title}} logo" width="200"></a></h1>
                 <img src="{{asset('frontend/imgs/svgexport-18.svg')}}">
               </div>
               <div id="social-section" class="col-lg-8 display-flex align-items-center">

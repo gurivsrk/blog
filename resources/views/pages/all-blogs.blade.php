@@ -51,13 +51,20 @@
                                         <span id="blogImage-error" class="error text-danger" for="input-blogImage">{{ $errors->first('blogImage') }}</span>
                                     @endif
                             </div>
-                            <div class="{{ $errors->has('title') ? ' has-danger' : '' }}">
+                              <div class="{{ $errors->has('title') ? ' has-danger' : '' }}">
                                     <label class="">{{ __('Title') }}</label>
                                     <input class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }}" name="title" id="input-title" type="text" placeholder="{{ __('title') }}" value="{{old('title',@$blogs->title)}}" required="true" aria-required="true"/>
                                     @if ($errors->has('title'))
                                         <span id="title-error" class="error text-danger" for="input-title">{{ $errors->first('title') }}</span>
                                     @endif
-                                </div>
+                              </div>
+                              <div class="{{ $errors->has('sub_title') ? ' has-danger' : '' }}">
+                                    <label class="">{{ __('Sub Title') }}</label>
+                                    <input class="form-control{{ $errors->has('sub_title') ? ' is-invalid' : '' }}" name="sub_title" id="input-title" type="text" placeholder="{{ __('sub title (if any)') }}" value="{{old('sub_title',@$blogs->sub_title)}}"/>
+                                    @if ($errors->has('sub_title'))
+                                        <span id="sub_title-error" class="error text-danger" for="input-sub_title">{{ $errors->first('sub_title') }}</span>
+                                    @endif
+                              </div>
                             <div class="row">
                                 <div class="col-md-6{{ $errors->has('categories') ? ' has-danger' : '' }}">
                                     <label class="">{{ __('Categories') }}</label>
@@ -106,7 +113,7 @@
                                     <span id="name-descritption" class="error text-danger" for="input-descritption">{{ $errors->first('descritption') }}</span>
                                 @endif
                             </div>
-
+                            
                             <div class="{{ $errors->has('post_status') ? ' has-danger' : '' }}">
                                 <label class="">{{ __('Post Status') }}</label>
                                 <select class="form-control custom-select" name="post_status" required aria-required="true">

@@ -8,57 +8,17 @@ use App\Http\Requests\UpdatemenuRequest;
 
 class menuController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        //
+        $menus = Menu::all();
+		$current_menu = Menu::find(request('menu'));
+        return view('pages.menu',compact('menus', 'current_menu'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoremenuRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoremenuRequest $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\menu  $menu
-     * @return \Illuminate\Http\Response
-     */
-    public function show(menu $menu)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\menu  $menu
-     * @return \Illuminate\Http\Response
-     */
     public function edit(menu $menu)
     {
-        //
+        return view('pages.menu');
     }
 
     /**
@@ -70,7 +30,9 @@ class menuController extends Controller
      */
     public function update(UpdatemenuRequest $request, menu $menu)
     {
-        //
+        $menu->data = $request->data;
+        $menu->save();
+		return back();
     }
 
     /**

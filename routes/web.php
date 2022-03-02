@@ -20,9 +20,18 @@ Route::group(['as' => 'frontend.', 'namespace' => 'frontend'], function () {
 	 	
 	 /// blog
 	Route::get('/all-blog', [App\Http\Controllers\frontend\homeController::class, 'about'])->name('all-blog');
+	Route::get('/all-blog/{blogName}',[App\Http\Controllers\frontend\homeController::class, 'about'])->name('blog');
 
 });
 
+//// for testing mail function
+// Route::get('/testmail',[App\Http\Controllers\subscribeController::class,'testEmail']);
+// Route::get('/testmailview',function(){
+// 	return view('email.subscribe',[
+// 		'email'=>'emials@gmial.com',
+// 		'email_content'=>'email content'
+// 	]);
+// });
 
 //////// Admin group
 
@@ -54,6 +63,14 @@ Route::group(['middleware' => 'auth'], function () {
 	
 	///// Career
 	Route::resource('vsrk-admin/career', 'App\Http\Controllers\CareerContoller');
+	
+	///// Career
+	Route::resource('vsrk-admin/subscriber', 'App\Http\Controllers\subscribeController');
+
+	///// Menu
+	Route::resource('vsrk-admin/menu', 'App\Http\Controllers\menuController')->only([
+		'index','edit','update'
+	]);
 
 	///// Static Pages
 	Route::resource('vsrk-admin/staticPages', 'App\Http\Controllers\staticPagesContoller')->only([

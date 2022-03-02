@@ -25,35 +25,19 @@
     }
 }
 
-.inputProperty{
-    height: 2.5rem;
-    padding: 0 0.75rem;
-    border: 2px solid #1cd5bd;
-    line-height: 2.5rem;
-    color: #222;
-    caret-color: #1cd5bd;
-    box-shadow: 5px 5px #1cd5bd42;
-    &:focus{
-        outline: none;
-        border: none;
-    }
-    &:last-child{
-        margin-left: -3px;
-    }
-}
 
 #colors(){
     white:#fff;
     primary:#5b5b5b;
     secondary:#222;
-    firstBg: #d2f7f2;
-    firstBorder: #1cd5bd;
-    secondBg: #f6e7f9;
-    secondBorder: #d187e0;
+    firstBg:#dbf8ff;
+    firstBorder: #38a9dd;
+    secondBg:  #feead7;
+    secondBorder: #fb8700;
     firstTitle: #0b5148;
     secondTitle:#4f3355;
-    hBlueBg: #dbf8ff;
-    hOrangeBg:#ffdaaf;
+    hBlueBg: #e4fce4;
+    hOrangeBg:#d2f7f2;
     special:#5C7489;
     special2: #fce29c;
 }
@@ -91,6 +75,23 @@ li{
         border-color: #colors[secondBg];
     }
 
+}
+
+.inputProperty{
+    height: 2.5rem;
+    padding: 0 0.75rem;
+    border: 2px solid #colors[firstBorder];
+    line-height: 2.5rem;
+    color: #222;
+    caret-color:  #colors[firstBorder];
+    box-shadow: 5px 5px #colors[firstBg];
+    &:focus{
+        outline: none;
+        border: none;
+    }
+    &:last-child{
+        margin-left: -3px;
+    }
 }
 .text-dark{
     color: #colors[secondary];

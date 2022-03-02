@@ -15,7 +15,7 @@
                     <div class="publish-details">
                         <span>BY <strong>LAKE</strong>  | Published February 25, 2022</span>
                     </div>
-                    <div>
+                    <div class="text-only">
                         <p>Savings accounts can be a useful tool for teaching kids about money. Kids can use a savings account to learn the importance of setting financial goals and how to work toward them by putting money aside regularly.</p> 
                         <p>But how do you know when it's the right time to introduce savings accounts to kids? And how can you help them learn how to manage it responsibly? These kinds of questions are a good starting point for teaching kids about money.</p>
                         <div class="special-box-with-li mt-4 mb-4">
