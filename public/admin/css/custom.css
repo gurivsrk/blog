@@ -1,0 +1,136 @@
+.justify-content-evenly{
+    justify-content: space-evenly !important;
+}
+
+.vsrk-icon, .vsrk-icon:focus{
+    display: inline-block;
+    color: #fff;
+    padding: 0 0 0 5px;
+    vertical-align: bottom;
+    transition: 0.5s all
+}
+.vsrk-icon-delete.btn-link, .vsrk-icon-delete.btn-link:focus {
+    line-height: 0;
+    border: none;
+    cursor: pointer;
+    outline: none   
+}
+.vsrk-icon:hover{
+    color: #292929
+}
+.vsrk-icon-delete:hover{
+    color: #e53935
+}
+.vsrk-logo-admin{
+    padding: 0 20px
+}
+.bg-error {
+    background: #ffe8e8;
+}
+.custom-select{
+    background-image: url(../img/up-down-arrow.png) !important;
+    border-bottom: 1px solid #d2d2d2;
+    background-size: 9px;
+    background-position: right;
+    background-position-y: -22px;
+}
+.custom-select:focus,.custom-select:hover{
+    background-size: 9px;
+    background-position: right;
+    background-position-y: -22px;
+    background-position-y: 15px;
+}
+.fileinput-preview img{
+    width: 100%;
+    padding: 25px;
+    height: 210px;
+    object-fit: contain;
+}
+.fileinput .fa{
+    position: absolute;
+    z-index: 1;
+    top: 12px;
+    right: 0;
+    font-size: 22px;
+    color: #000;
+    display: none;
+}
+.vsrkAddForms{
+    border: 2px dashed;
+    padding: 25px;
+    margin: 10px 0;
+    box-shadow: 1px 1px 58px -29px;
+    display: none;
+}
+
+.table-sort tr.even {
+    background: azure;
+}
+
+.table-sort thead{
+    background: #007070;
+    color: #fff !important;
+    line-height: 45px;
+}
+td p {
+    margin: 0;
+}
+.error {
+    font-weight: 500;
+}
+
+.obj-fit-img{
+    width: 340px;
+    height: 285px;
+    object-fit: contain
+}
+
+.img-padding{
+    padding: 10px 20px !important;
+}
+.page-field-section {
+    padding: 45px;
+    border: 1px solid #c1c1c1;
+    box-shadow: 0px 0px 16px #ececec;
+    border-radius: 25px;
+    margin: 30px 20px;
+}
+.seotype-section {
+    background: #fff8f0;
+    padding: 20px;
+}
+.seotype-section .card-title{
+    background: #50bfa7;
+    color: #fff;
+    font-weight: 500;
+    padding: 5px;
+}
+
+
+/***** Pagination ******/
+.pagination svg {
+    width: 14px;
+}
+.pagination div:first-child{
+    display: none;
+}
+
+/****** select2 *******/
+.select2.select2-container {
+    width: 100% !important;
+}
+.select2-selection.select2-selection--multiple, .select2-container--default .select2-selection--single {
+    border: none !important;
+    border-bottom: 1px solid #a0a0a0 !important;
+    border-radius: 0 !important;
+    padding-bottom: 0 !important;
+}
+.select2-container .select2-selection--multiple .select2-selection__rendered, .select2-container .select2-selection--single .select2-selection__rendered{
+    line-height: 30px;
+}
+.select2-container--default .select2-selection--multiple{
+    background-color: transparent !important;
+}
+.card-body p{
+    text-align: justify;
+}

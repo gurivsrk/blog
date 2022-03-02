@@ -1,0 +1,132 @@
+.display-flex{
+    display: flex;
+}
+.display-inline{
+    display: inline-block;
+}
+.display-none{
+    display: none;
+}
+.cursor-point{
+    cursor: pointer;
+}
+.container-fluid{
+    margin: 0 5%;
+}
+.font-large{
+    font-size: 28px;
+}
+.font-10{
+    font-size: 10px;
+}
+#top-header {
+    padding: 15px 100px;
+}
+#top-header a{
+    width: 220px;
+}
+.mr-1{
+    margin-right: 10px;
+}
+.mr-2{
+    margin-right: 20px;
+}
+.mr-3{
+    margin-right: 30px;
+}
+.mr-4{
+    margin-right: 40px;
+}
+.mr-5{
+    margin-right: 50px;
+}
+.ml-1{
+    margin-left: 10px;
+}
+.ml-2{
+    margin-left: 20px;
+}
+.ml-3{
+    margin-left: 30px;
+}
+.ml-4{
+    margin-left: 40px;
+}
+.ml-5{
+    margin-left: 50px;
+}
+.p-10{
+    padding:50px 100px;
+}
+.pl-2{
+    padding-left: 20px;
+}
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    color: #495057;
+    background-color: #f1f1f1;
+    border-color: #dee2e6 #dee2e6 #f1f1f1;
+}
+
+h1, h2{
+    font-family: serif;
+}
+
+/******** Preloader ******/
+#preloader{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    z-index: 100000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#preloader .pre-box{
+    width: 150px;
+    height: 150px;
+    background: #3CB0DC;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 4px 4px 20px rgba(0,0,0,0.3);
+  }
+#preloader .pre-box-container{
+    height: 15px;
+    width: 105px;
+    display: flex;
+    position: relative;
+}
+  
+#preloader .circle{
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #fff;
+    animation: move 500ms linear 0ms infinite;
+    margin-right: 30px;
+}
+#preloader .circle:first-child{
+    position: absolute;
+    top:0;
+    left:0;
+    animation: grow 500ms linear 0ms infinite;
+}
+#preloader .circle:last-child{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-right: 0;
+    animation: grow 500ms linear 0s infinite reverse;
+}
+
+  @keyframes grow {
+    from {transform: scale(0,0); opacity: 0;}
+    to {transform: scale(1,1); opacity: 1;}
+  }
+  
+  @keyframes move {
+    from {transform: translateX(0px)}
+    to {transform: translateX(45px)}
+  }
