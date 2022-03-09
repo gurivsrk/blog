@@ -12,25 +12,13 @@ use App\Http\Requests\UpdatesubcriberRequest;
 
 class subscribeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+ 
+     
+ 
     public function index()
     {
-        $subscribe = subcriber::all();
+        $subscribe = subcriber::select('id','email','status')->get();
         return view('pages.subscriber',compact(['subscribe']));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -41,18 +29,9 @@ class subscribeController extends Controller
      */
     public function store(StoresubcriberRequest $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\subcriber  $subcriber
-     * @return \Illuminate\Http\Response
-     */
-    public function show(subcriber $subcriber)
-    {
-        //
+        $data = $request->all();
+        subcriber::create($data);
+        return back()->with('success','Successfully Added');
     }
 
     /**
@@ -61,9 +40,13 @@ class subscribeController extends Controller
      * @param  \App\Models\subcriber  $subcriber
      * @return \Illuminate\Http\Response
      */
-    public function edit(subcriber $subcriber)
-    {
-        //
+    public function edit(subcriber $subcriber,$id)
+    {   
+         $type = 'edit-subscriber';
+         $s_subcriber = subcriber::findOrFail($id);
+         $subscribe = subcriber::select('id','email','status')->get();
+        
+         return view('pages.subscriber',compact(['subscribe','type','s_subcriber']));
     }
 
     /**
@@ -73,20 +56,29 @@ class subscribeController extends Controller
      * @param  \App\Models\subcriber  $subcriber
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatesubcriberRequest $request, subcriber $subcriber)
+    public function update(UpdatesubcriberRequest $request,$id)
     {
-        //
+        $data = $request->all();
+        $subs = subcriber::findOrFail($id);
+        $subs->update($data);
+        return back()->with('update','Updated Successfully');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\subcriber  $subcriber
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(subcriber $subcriber)
+    public function sendMail($email_id=0)
     {
-        //
+        $type = 'single';
+        $subscribe = subcriber::select('id','email','status')->get();
+        if(!$email_id){
+            $type = 'multi';
+            $subscribe = subcriber::select('id','email','status')->where('status','subscribe')->get();
+        }
+        return view('pages.send_mail',compact(['subscribe','email_id','type']));
+    }
+
+    public function send(Request $request)
+    {
+        $this->sendEmail($request->all());
+        return back()->with('success','Send Email Successfully');
     }
 
  /////// Purely for testing purpose
@@ -97,38 +89,14 @@ class subscribeController extends Controller
         $subject = "test email from local sever";
         $email_content = "Welcome to mail Function";
         Mail::to($email)->send(new subscibe(  $email ,$subject, $email_content ));
-       // return redirect()->route('admin.subscribers.index')->with('message', 'Email was sent successfully');
        echo 'done';
     }
 
-    public function sendEmail(Request $request)
+    private function sendEmail($request)
     {    
-         $request->validate([
-          'emails.*' => 'email|required',
-          'subject' => 'required'
-          ]);
-        $main_email = "news@slottomat.com";
-        $emails = $request->emails;
-        $subject = $request->subject;
-        $email_content = "Welcome to mail Function";
-        foreach ($emails as $email){
-          Mail::to($email)->send(new subscibe( $email, $subject, $email_content));
-        }
-        return redirect()->route('admin.subscribers.index')->with('message', 'Email was sent successfully');
+        $job = (new \App\Jobs\sendNewsletter($request))->delay(now()->addMinute(2));
+        dispatch($job);
+        return true;
     }
 
-    public function sendBulkEmail(Request $request)
-    {     $request->validate([
-          'emails.*' => 'email|required',
-          'subject' => 'required'
-          ]);
-        $main_email = "news@slottomat.com";
-        $emails = $request->emails;
-        $subject = $request->subject;
-        $email_content = "Welcome to mail Function";
-        foreach ($emails as $email){
-          Mail::to($email)->send(new subscibe( $email, $subject, $email_content));
-        }
-        return redirect()->route('admin.subscribers.index')->with('message', 'Email was sent successfully');
-    }
 }

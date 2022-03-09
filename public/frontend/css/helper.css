@@ -1,3 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?&family=Rubik:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500;600;700;800;900&display=swap');
+body{
+    font-family: 'Rubik', sans-serif;
+    font-display: swap;
+    box-sizing: border-box;
+}
+h1, h2,h3,h4,h5,h6{
+    font-family: 'Maven Pro', sans-serif;
+}
+h1{
+    font-size: 32px;
+    font-weight: 600;
+}
+h2{
+    font-size: 28px;
+    font-weight: 600;
+}
+h3{
+    font-size: 24px;
+    font-weight: 600;
+}
+h4{
+    font-size: 20px;
+    font-weight: 700;
+}
+h5{
+    font-size: 16px;
+    font-weight: 700;
+}
+h6{
+    font-size: 14px;
+    font-weight: 700;
+}
 .display-flex{
     display: flex;
 }
@@ -7,6 +41,11 @@
 .display-none{
     display: none;
 }
+.position-relative-custom{
+    position: relative;
+    z-index: 1;
+}
+
 .cursor-point{
     cursor: pointer;
 }
@@ -23,7 +62,7 @@
     padding: 15px 100px;
 }
 #top-header a{
-    width: 220px;
+    width: 22%;
 }
 .mr-1{
     margin-right: 10px;
@@ -67,8 +106,10 @@
     border-color: #dee2e6 #dee2e6 #f1f1f1;
 }
 
-h1, h2{
-    font-family: serif;
+
+
+.fa-angle-right, .fa-angle-left{
+    font-weight: 900 !important;
 }
 
 /******** Preloader ******/

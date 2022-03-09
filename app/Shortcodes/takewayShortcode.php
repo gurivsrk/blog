@@ -4,14 +4,14 @@ namespace App\Shortcodes;
 /**
  * Class takeway
  * @package App\Shortcodes
- * @shortcode [takeway ids="1,2,3,4,5,6,7,8,9,10"]
+ * @shortcode [takeway list="1|2|3"]
  */
 class takewayShortcode {
 
 public function register($shortcode, $content, $compiler, $name, $viewData)
 {
-    $casinos_ids = $shortcode->ids;
+    $list = explode('|',$shortcode->list);
 
-    return view('shortcodes.takeway', compact('shortcode', 'content', 'casinos'));
+    return view('shortcodes.takeway', compact('shortcode', 'content', 'list'));
 }
 }

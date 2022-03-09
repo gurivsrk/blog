@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\blogs;
 use App\Models\category;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreblogsRequest;
 use App\Http\Requests\UpdateblogsRequest;
 use Illuminate\Support\Facades\Storage;
@@ -37,7 +38,6 @@ class blogController extends Controller
             $data = $request->all();
             $data['blogImage'] = $imgname;
             $data['tags'] = json_encode($request->tags);
-            $data['categories'] = json_encode($request->categories);
             blogs::create($data);
         
         return redirect()->back()->with('success','Successfully Added');
@@ -99,6 +99,25 @@ class blogController extends Controller
            //die('fail');
             return redirect()->back()->with('delete','Fail to Delete Blog');
        }
+    }
+
+     public function addFeatures(Request $request){
+        $blog_id = str_replace('blog-','',$request->id);
+         if($request->type == true){
+            $f_status = false;
+            echo 'remove';
+         }  
+         else{
+            $count = blogs::where('feature_status',true)->count();
+            if($count < 4){
+                $f_status = true;
+            }
+            else{
+                return false;
+            }
+        }
+        blogs::where('id',$blog_id)->update(array('feature_status'=> $f_status));
+        return true;
     }
     
 }

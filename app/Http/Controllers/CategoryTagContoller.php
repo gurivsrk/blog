@@ -29,7 +29,7 @@ class CategoryTagContoller extends Controller
      */
     public function store(storeCategoryRequest $request)
     {
-        $data = $request->all();
+            $data = $request->all();
       
             if($request->file('logo')){
                 $imgname = addMedia($request->file('logo'),'logos');

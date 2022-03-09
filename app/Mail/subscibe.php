@@ -12,7 +12,7 @@ class subscibe extends Mailable
     use Queueable, SerializesModels;
 
 
-    public $subject, $email_content;
+    public $email ,$subject, $email_content;
     /**
      * Create a new message instance.
      *

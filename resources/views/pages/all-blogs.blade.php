@@ -3,7 +3,6 @@
 @section('content')
 
 @php
-  $decoded_cat = json_decode(@$blogs->categories);
   $decoded_tag = json_decode(@$blogs->tags);
 @endphp
 
@@ -68,15 +67,12 @@
                             <div class="row">
                                 <div class="col-md-6{{ $errors->has('categories') ? ' has-danger' : '' }}">
                                     <label class="">{{ __('Categories') }}</label>
-                                   <select name="categories[]" class="vsrk-select form-control custom-select" multiple aria-required="true">
+                                   <select name="categories" class="vsrk-select form-control custom-select" aria-required="true">
+                                   <option value="">Please Select One</option>
                                        @if(!empty($catetag))
                                         @foreach($catetag as $cat)
                                           @if($cat->type == "category")
-                                            @if(!empty($decoded_cat))
-                                              <option value="{{$cat->name}}" {{(in_array($cat->name,$decoded_cat)?'selected':'')}}>{{$cat->name}}</option>
-                                            @else
-                                              <option value="{{$cat->name}}">{{$cat->name}}</option>  
-                                            @endif
+                                              <option value="{{$cat->id}}"{{ !empty($blogs->categories)?($blogs->categories == $cat->id?'selected':''):''}}>{{$cat->name}}</option>  
                                           @endif
                                         @endforeach
                                        @endif
@@ -92,9 +88,9 @@
                                         @foreach($catetag as $tag)
                                           @if($tag->type == "tag")
                                           @if(!empty($decoded_tag))
-                                              <option value="{{$tag->name}}" {{(in_array($tag->name,$decoded_tag)?'selected':'')}}>{{$tag->name}}</option>
+                                              <option value="{{$tag->id}}" {{(in_array($tag->name,$decoded_tag)?'selected':'')}}>{{$tag->name}}</option>
                                             @else
-                                              <option value="{{$tag->name}}">{{$tag->name}}</option>
+                                              <option value="{{$tag->id}}">{{$tag->name}}</option>
                                             @endif
                                           @endif
                                         @endforeach
@@ -158,5 +154,36 @@
 @endsection
 
 @push('js')
-
+<script>
+    $(document).ready(function(){
+        $('.featured').on('click',function(){
+          const $this = $(this);
+            var hasClasss = 0;
+            if($this.hasClass('active')){
+              hasClasss = 1;
+            }
+            var id = $(this).data('id');
+              $.ajax({
+                      headers: {'X-CSRF-TOKEN': "{{ csrf_token() }}"},
+                      method: 'PATCH',
+                      url: "{{route('blog.addFeatures')}}",
+                      data: {id: id, type: hasClasss },
+                      success: function(result){
+                        console.log(result);
+                        if(result == true){
+                              md.showNotification('top','right','success', 'check_circle',"Successfully Updated Order" )
+                              $this.addClass('active')
+                        }
+                        else if(result=='remove1'){
+                              md.showNotification('top','right','warning', 'check_circle',"Successfully removed" )
+                              $this.removeClass('active')
+                        }
+                        else{
+                          md.showNotification('top','right','danger', 'error',"Atmax 2 featured blog can be added" )
+                        }
+                      }
+                  })
+	    });
+    });
+</script>
 @endpush

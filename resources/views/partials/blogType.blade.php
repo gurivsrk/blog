@@ -8,7 +8,10 @@
     @endif
            <div class="float-right">
         @if($type == 'edit-blog' || $type == 'index-blog')
-            <a href="#" class="vsrk-icon"><span class="material-icons">preview</span></a>
+            <a href="javascript:void(0)" data-id="blog-{{$item->id}}" class="vsrk-icon {{($item->feature_status==true?'active':'')}} featured"><span class="material-icons">star</span></a>
+        @endif
+        @if($type == 'edit-blog' || $type == 'index-blog')
+            <a href="{{route('frontend.blog',[$item->id, Illuminate\Support\Str::slug($item->title)])}}" target="_blank" class="vsrk-icon"><span class="material-icons">preview</span></a>
         @endif
         @if(@$type == 'edit-testimonial' || @$type == 'index-testimonial')
             <a href="{{route('testimonial.edit',$item->id)}}" class="vsrk-icon"><span class="material-icons">edit</span></a>

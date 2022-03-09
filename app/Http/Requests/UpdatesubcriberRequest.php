@@ -13,7 +13,7 @@ class UpdatesubcriberRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**

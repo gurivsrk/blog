@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use App\Models\staticPages;
+use App\Models\menu;
+use App\Models\category;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 
@@ -26,6 +28,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         $gd = staticPages::getAllFields('GD');
-        View::share('gd', $gd);
+        $menus = menu::select('name','data','id')->get();
+        $cate = category::select('bgcolor','id')->get();
+        View::share(['gd'=>$gd,'menus'=>$menus, 'cate'=>$cate]);
     }
 }

@@ -3,12 +3,12 @@ $(window).on('load',()=>{
 })
 $('.toggle-child').on('click',function(){
     const id =	$(this).data('id');
-    $('#'+id).show('slide',{direction:'left'},100);
+    $('#'+id).show();
 });
 
 $('.close').on('click',function(){
     const id =	$(this).data('id');
-    $('#'+id).hide('slide',{direction:'left'},100);
+    $('#'+id).hide();
 });
 
 $('#myTab a').on('click', function (e) {
@@ -21,6 +21,7 @@ $('.more-btn').on('click',function(){
     $(this).children('i').toggleClass('fa-angle-left fa-angle-right');
     $('.type-see').toggleClass('invisible visible');
 })
+
   $(window).on('scroll',()=>{
     const header = document.getElementById('navbar-main');
     const sticky = header.offsetTop;
@@ -35,9 +36,9 @@ $('.more-btn').on('click',function(){
 
   //// masonary type gallery
 
-  var maxLength = $('.masonry-items').length
-  var baseMargin = 35, total = 0
-  for(var a=6 ; a < maxLength; a+=4){
-    total = baseMargin + total
-    $(".masonry-items:nth-child(2n+"+a+")").css('transform','translatey(-'+total+'px)')
-  }
+  // var maxLength = $('.masonry-items').length
+  // var baseMargin = 35, total = 0
+  // for(var a=6 ; a < maxLength; a+=4){
+  //   total = baseMargin + total
+  //   $(".masonry-items:nth-child(2n+"+a+")").css('transform','translatey(-'+total+'px)')
+  // }

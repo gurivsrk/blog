@@ -134,3 +134,9 @@ td p {
 .card-body p{
     text-align: justify;
 }
+textarea.cke_source{
+    height: 100% !important;
+}
+.vsrk-icon.featured.active span, .vsrk-icon.featured:hover  {
+    color: #f60;
+  }

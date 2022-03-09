@@ -13,7 +13,7 @@ class StoresubcriberRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,14 @@ class StoresubcriberRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'email'=>'required | unique:subscriber',
+            'status' => 'required'
+        ];
+    }
+
+    public function messages(){
+        return [
+            'email.required' => 'already exist'
         ];
     }
 }

@@ -26,7 +26,7 @@ return [
     |
     */
 
-    'env' => env('APP_ENV', 'developer'),
+    'env' => env('APP_ENV', 'development'),
 
     /*
     |--------------------------------------------------------------------------
@@ -176,6 +176,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         ////custom
         Webwizo\Shortcodes\ShortcodesServiceProvider::class,
+        App\Providers\ShortcodesServiceProvider::class,
     ],
 
     /*

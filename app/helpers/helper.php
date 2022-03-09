@@ -23,6 +23,13 @@ if(!function_exists('updateMedia')){
     }
 }
 
+if(!function_exists('getCateTag')){
+    function getTagName($id){
+        $cat =  App\Models\category::select('name')->where('id',$id)->get();
+        return $cat;
+    }
+}
+
 if(!function_exists('deleteMedia')){
     function deleteMedia(){
        //////

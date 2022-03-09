@@ -28,6 +28,13 @@
                                         <span id="name-error" class="error text-danger" for="input-name">{{ $errors->first('name') }}</span>
                                     @endif
                                 </div>
+                                <div class="{{ $errors->has('bgcolor') ? ' has-danger' : '' }}">
+                                    <label class="">{{ __('bg color') }}</label>
+                                    <input class="form-control{{ $errors->has('bgcolor') ? ' is-invalid' : '' }}" name="bgcolor" id="input-bgcolor" type="color"  value="{{ old('bgcolor',@$cateUpdate->bgcolor)}}"/>
+                                    @if ($errors->has('bgcolor'))
+                                        <span id="bgcolor-error" class="error text-danger" for="input-bgcolor">{{ $errors->first('bgcolor') }}</span>
+                                    @endif
+                                </div>
                                 <div class="">
                                     <label class="">{{ __('Type') }}</label>
                                    <select name="type" class="form-control custom-select" aria-required="true" required>
@@ -42,7 +49,7 @@
                                     <label class="mt-4">Category for ?</label>
                                 <div class="form-check form-check-radio {{ $errors->has('cateFor') ? ' has-danger' : '' }}">
                                   <label class="form-check-label text-dark">
-                                      <input class="form-check-input vsrk-jquery-radio" data-attr="select-parent" type="radio" name="for" id="cateFor1" value="all" {{(@$cateUpdate->for ==='Form' )?"checked" : " "}}  aria-required="true" required>
+                                      <input class="form-check-input vsrk-jquery-radio" data-attr="select-parent" type="radio" name="for" id="cateFor1" value="all" {{(@$cateUpdate->for ==='all' )?"checked" : " "}}  aria-required="true" required>
                                       For All
                                       <span class="circle">
                                           <span class="check"></span>

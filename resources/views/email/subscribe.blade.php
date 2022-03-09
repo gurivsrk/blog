@@ -118,10 +118,10 @@
         }
     </style>
 </head>
-  <body style="background-color: #f2e1ff;margin: 0;padding: 0;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;">
-    <div style="background-color:#f2e1ff;">
+  <body style="background-color: #dbf8ff;margin: 0;padding: 0;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;">
+    <div style="background-color:#dbf8ff;">
       <div style="background:#34014e;background-color:#34014e;margin:0px auto;border-radius:8px;max-width:600px;">
-        <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#45146c;background-color: #45146c;width: 100%;border-collapse: collapse;">
+        <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#38a9dd;background-color: #38a9dd;width: 100%;border-collapse: collapse;">
           <tbody>
             <tr>
               <td style="direction: ltr;font-size: 0px;padding: 0px;text-align: center;vertical-align: top;border-collapse: collapse;">
@@ -145,7 +145,7 @@
                                             <tbody>
 
                                               <tr>
-                                                <td style="width: 600px;border-collapse: collapse;"> <img src="{{ asset('frontend/imgs/email/welcome_mail-min.png') }}" style="border: 0;display: block;outline: none;text-decoration: none;height: auto;width: 80%;position: relative;margin-left: auto;margin-right: auto;line-height: 100%;" width="600" alt="header">
+                                                <td style="width: 600px;border-collapse: collapse;background: #fff;padding: 20px;"> <img src="{{ asset($gd->website_logo) }}" style="border: 0;display: block;outline: none;text-decoration: none;height: auto;width: 80%;position: relative;margin-left: auto;margin-right: auto;line-height: 100%;" width="600" alt="header">
                                                 </td>
                                               </tr>
                                             </tbody>
@@ -165,7 +165,7 @@
                   </table>
                 </div>
 
-                <div style="margin:0px auto;max-width:600px; background:linear-gradient(#45146c, #28083f)">
+                <div style="margin:0px auto;max-width:600px; background:linear-gradient(#38a9dd, #38a9dd)">
                   <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width: 100%;border-collapse: collapse;">
                     <tbody>
                       <tr>
@@ -174,9 +174,9 @@
                           <div class="mj-column-per-100 outlook-group-fix" style="font-size:13px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
                             <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align: top;border-collapse: collapse;" width="100%">
                               <tr>
-                                <td align="center" style="font-size: 0px;padding: 0px;border-collapse: collapse;">
-                                  <div style="font-family:Lato, Helvetica, sans;font-size:15px;line-height:24px;text-align:center;color:#545465;">
-                                    <p style="color: #f5c582;display: block;margin: 13px 0;text-align:justify">{!! $email_content !!}</p>
+                                <td align="center" style="font-size: 0px;padding: 0px;border-collapse: collapse;height: 55vh;min-height: 100%;">
+                                  <div style="font-family:Lato, Helvetica, sans;font-size:15px;line-height:24px;text-align:center;color: #fff;">
+                                    <p style="display: block;margin: 13px 0;text-align:justify">{!! $email_content !!}</p>
                                   </div>
                                 </td>
                               </tr>
@@ -205,7 +205,7 @@
                               </tbody>
                             </table>
                           </div>
-                            </table><hr style="border-color:#5b2d7d;margin: 15px 0 8px 0;">
+                            </table><hr style="border-color:#dbf8ff;margin: 15px 0 8px 0;">
                                 <div style="margin:0px auto;max-width:600px;">
                                   <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width: 100%;border-collapse: collapse;">
                                     <tbody>
@@ -216,10 +216,10 @@
                                             <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align: top;border-collapse: collapse;" width="100%">
                                               <tr>
                                                 <td align="center" style="font-size: 0px;padding:0px 25px;border-collapse: collapse;">
-                                                  <div style="font-family:Lato, Helvetica, sans;font-size:12px;line-height:18px;text-align:center;color:#bf6aff;">
-                                                    <p style="display: block;margin: 5px 0;">Copyright © 2020 {{ config('app.name') }}</p>
+                                                  <div style="font-family:Lato, Helvetica, sans;font-size:12px;line-height:18px;text-align:center;color:#fff;">
+                                                    <p style="display: block;margin: 5px 0;">Copyright © 2022 {{ config('app.name') }}</p>
                                                     <p style="display: block;margin: 5px 0;">You are receiving this email because you opted in via our website.</p>
-                                                     <p style="display: block;margin: 5px 0;"><a href="#" style="color:#bf6aff; text-decoration: underline;">Unsubscribe</a> 
+                                                     <p style="display: block;margin: 5px 0;"><a href="{{route('frontend.email.unsubscribe',$email)}}" style="color:#fff; text-decoration: underline;">Unsubscribe</a> 
                                                   </p>
                                                 </div>
                                               </td>

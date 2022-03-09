@@ -3,246 +3,186 @@
     <header>
       <div id="top-header" class="d-flex justify-content-center">
         <a href="#" class="display-flex">
-          <i class="fa-solid fa-building-columns display-inline font-large"></i>
-          <span class="display-inline mx-2">Making Sense of your Finances for Over 20 Years</span>
+          <img src="{{ asset('frontend/imgs/books.png')}}" width="25" height="100%" class="img-fluid display-inline">
+          <span class="display-inline mx-2">Top 7 Books of the week</span>
           <div class="verticle-divider"></div>
         </a>
         <a href="#" class="display-flex">
-          <i class="fa-solid fa-building-columns display-inline font-large"></i>
-          <span class="display-inline mx-2">Making Sense of your Finances for Over 20 Years</span>
+          <img src="{{ asset('frontend/imgs/podcast.png')}}" width="25" height="100%" class="img-fluid display-inline">
+          <span class="display-inline mx-2">Top 10 Podcast of the Month</span>
           <div class="verticle-divider"></div>
         </a>
         <a href="#" class="display-flex">
-          <i class="fa-solid fa-building-columns display-inline font-large"></i>
-          <span class="display-inline mx-2">Making Sense of your Finances for Over 20 Years</span>
+          <img src="{{ asset('frontend/imgs/youtube_video.png')}}" width="25" height="100%" class="img-fluid display-inline">
+          <span class="display-inline mx-2">Top 10 Youtube Videos of the Month</span>
           <div class="verticle-divider"></div>
         </a>
         <a href="#" class="display-flex">
-          <i class="fa-solid fa-building-columns display-inline font-large"></i>
-          <span class="display-inline mx-2">Making Sense of your Finances for Over 20 Years</span>
+        <img src="{{ asset('frontend/imgs/app.png')}}" width="25" height="100%" class="img-fluid display-inline">
+          <span class="display-inline mx-2">Top 5 Mobile App of the Month</span>
         </a>   
       </div>
         <div class="container">
           <div class="row mt-3">
-            <div class="col-lg-9">
+            <div class="col-lg-12">
               <div class="row">
                   <div class="title">Featured</div>
-                <div class="col-lg-7">
-                  <div class="feature-card-img position-relative-custom cursor-point">
-                    <a href="#">
-                    <img src="{{ asset('frontend/imgs/demo.jpg') }} " class="img-fluid">
-                  </div>
-                   <div class="feature-card">
-                        <div class="card-title">us economy news</div>
-                        <h2>Gender Pay Gap Persists Even at Top of Corporate ladder</h2>
-                        <div class="card-by">
-                          By <span>Name</span>, Published 22-02-2022
+                  @foreach($featured_blog as $fblog)
+                    @if($loop->first)
+                      <div class="col-lg-6">
+                        <div class="feature-card-img position-relative-custom cursor-point">
+                          <a href="{{route('frontend.blog',[$fblog->id, $fblog->slug])}}">
+                          <img src="{{ asset($fblog->blogImage) }} " class="img-fluid" style=" width: 100%; height: 392px; object-fit: cover;">
                         </div>
-                   </div> 
-                  </a>
-                </div>  
-                <div class="col-lg-5">
-                  <a href="#">
-                  <div class="feature-card-img secondary position-relative-custom cursor-point">
-                    <img src="{{ asset('frontend/imgs/demo.jpg') }}" class="img-fluid">
-                  </div>
-                  <div class="feature-card secondary">
-                      <div class="card-title">us economy news</div>
-                      <h2>Gender Pay Gap Persists Even at Top of Corporate ladder</h2>
-                      <div class="card-by">
-                        By <span>Name</span>, Published 22-02-2022
+                        <div class="feature-card">
+                              <div class="card-title">{{$fblog->CatName->name}}</div>
+                              <h2>{{$fblog->title}}</h2>
+                              <div class="card-by">
+                                By <span>Admin</span>, Published {{$fblog->BlogDate}}
+                              </div>
+                        </div> 
+                        </a>
                       </div>
-                  </div> 
-                </a> 
-                </div>
-                <div class="col-lg-12">
-                  <div id="feature-tab">
-                    <ul class="nav nav-tabs" id="myTab" role="tablist">
-                      <h4 class="mr-1">Must Reads:</h4>
-                      <li class="nav-item">
-                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" id="messages-tab" data-toggle="tab" href="#messages" role="tab" aria-controls="messages" aria-selected="false">Messages</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" id="settings-tab" data-toggle="tab" href="#settings" role="tab" aria-controls="settings" aria-selected="false">Settings</a>
-                      </li>
-                    </ul>
-                    
-                    <div class="tab-content">
-                      <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                      @endif
+                  @endforeach
+                  <div class="col-lg-6">
                         <div class="row">
-                          <div class="col-md-4">
-                            <a href="#">
-                             <div class="feature-card feature-tab">
-                                <div class="feature-card-img position-relative-custom cursor-point display-inline">
-                                  <img src="{{ asset('frontend/imgs/save-money.png')}}" width="50" class="img-fluid position-relative-custom">
-                                </div>
-                                  <div class="card-title">us economy news</div>
-                                  <h2>Gender Pay Gap Persists Even at Top of Corporate ladder</h2>
+                        @foreach($featured_blog as $fblog)
+                          @if($loop->first)
+
+                          @elseif($loop->last)
+                          <div class="col-md-12">
+                            <a href="{{route('frontend.blog',[$fblog->id, $fblog->slug])}}">
+                              <div class="feature-card-img tertiary position-relative-custom cursor-point">
+                                <img src="{{ asset($fblog->blogImage) }}" class="img-fluid" style=" width: 100%; height: 175px; object-fit: cover;">
+                              </div>
+                              <div class="feature-card tertiary">
+                                  <div class="card-title">{{$fblog->CatName->name}}</div>
+                                  <h2>{{$fblog->title}}</h2>
                                   <div class="card-by">
-                                    By <span>Name</span>, Published 22-02-2022
+                                    By <span>Admin</span>, Published {{$fblog->BlogDate}}
                                   </div>
-                             </div> 
-                            </a>
+                              </div> 
+                            </a> 
                           </div>
-                          <div class="col-md-4">
-                            <a href="#">
-                             <div class="feature-card feature-tab">
-                                <div class="feature-card-img position-relative-custom cursor-point display-inline">
-                                  <img src="{{ asset('frontend/imgs/save-money.png')}}" width="50" class="img-fluid position-relative-custom">
+                            @else
+                            <div class="col-md-6">
+                              <a href="{{route('frontend.blog',[$fblog->id, $fblog->slug])}}">
+                                <div class="feature-card-img secondary position-relative-custom cursor-point">
+                                  <img src="{{ asset($fblog->blogImage) }}" class="img-fluid" style=" width: 100%; height: 150px; object-fit: cover;">
                                 </div>
-                                  <div class="card-title">us economy news</div>
-                                  <h2>Gender Pay Gap Persists Even at Top of Corporate ladder</h2>
-                                  <div class="card-by">
-                                    By <span>Name</span>, Published 22-02-2022
-                                  </div>
-                             </div> 
-                            </a>
-                          </div>
-                          <div class="col-md-4">
-                            <a href="#">
-                             <div class="feature-card feature-tab">
-                                <div class="feature-card-img position-relative-custom cursor-point display-inline">
-                                  <img src="{{ asset('frontend/imgs/save-money.png')}}" width="50" class="img-fluid position-relative-custom">
-                                </div>
-                                  <div class="card-title">us economy news</div>
-                                  <h2>Gender Pay Gap Persists Even at Top of Corporate ladder</h2>
-                                  <div class="card-by">
-                                    By <span>Name</span>, Published 22-02-2022
-                                  </div>
-                             </div> 
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab">.pro..</div>
-                      <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">
-                        <div class="row">
-                          <div class="col-md-4">
-                            <a href="#">
-                             <div class="feature-card feature-tab">
-                                <div class="feature-card-img position-relative-custom cursor-point display-inline">
-                                  <img src="{{ asset('frontend/imgs/save-money.png')}}" width="50" class="img-fluid position-relative-custom">
-                                </div>
-                                  <div class="card-title">us economy news</div>
-                                  <h2>Gender Pay Gap Persists Even at Top of Corporate ladder</h2>
-                                  <div class="card-by">
-                                    By <span>Name</span>, Published 22-02-2022
-                                  </div>
-                             </div> 
-                            </a>
-                          </div>
-                          <div class="col-md-4">
-                            <a href="#">
-                             <div class="feature-card feature-tab">
-                                <div class="feature-card-img position-relative-custom cursor-point display-inline">
-                                  <img src="{{ asset('frontend/imgs/save-money.png')}}" width="50" class="img-fluid position-relative-custom">
-                                </div>
-                                  <div class="card-title">us economy news</div>
-                                  <h2>Gender Pay Gap Persists Even at Top of Corporate ladder</h2>
-                                  <div class="card-by">
-                                    By <span>Name</span>, Published 22-02-2022
-                                  </div>
-                             </div> 
-                            </a>
-                          </div>
-                          <div class="col-md-4">
-                            <a href="#">
-                             <div class="feature-card feature-tab">
-                                <div class="feature-card-img position-relative-custom cursor-point display-inline">
-                                  <img src="{{ asset('frontend/imgs/save-money.png')}}" width="50" class="img-fluid position-relative-custom">
-                                </div>
-                                  <div class="card-title">us economy news</div>
-                                  <h2>Gender Pay Gap Persists Even at Top of Corporate ladder</h2>
-                                  <div class="card-by">
-                                    By <span>Name</span>, Published 22-02-2022
-                                  </div>
-                             </div> 
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="tab-pane" id="settings" role="tabpanel" aria-labelledby="settings-tab">.sett..</div>
-                    </div>
-                    
+                                <div class="feature-card secondary">
+                                    <div class="card-title">{{$fblog->CatName->name}}</div>
+                                    <h4>{{$fblog->title}}</h4>
+                                    <div class="card-by">
+                                      By <span>Admin</span>, Published {{$fblog->BlogDate}}
+                                    </div>
+                                </div> 
+                              </a> 
+                            </div>
+                      @endif
+                  @endforeach
                   </div>
                 </div>
-              </div>
-            </div>
-            <div class="col-lg-3">
-              <div class="title">title</div>  
-              <div id="side-box">
-                  <div class="side-box-items">
-                    <div class="img-title display-flex">
-                        <img src="{{ asset('frontend/imgs/bank.png')}}" width="50" height="100%" class="img-fluid display-inline">
-                        <div class="display-inline side-box-title-text">
-                          <span class="box-title">Average Mortgage rate</span>   
-                          <span class="box-text title-with-border">4.32%</span> 
-                        </div>
-                    </div>
-                    <a href="#"> See what the rate trend means for you <i class="fa-solid fa-angle-right"></i></a>
-                  </div>
-                  <div class="side-box-items">
-                    <div class="img-title display-flex">
-                        <img src="{{ asset('frontend/imgs/bank.png')}}" width="50" height="100%" class="img-fluid display-inline">
-                        <div class="display-inline side-box-title-text">
-                          <span class="box-title">Average Mortgage rate</span>   
-                          <span class="box-text title-with-border second">4.32%</span> 
-                        </div>
-                    </div>
-                    <a href="#"> See what the rate trend means for you <i class="fa-solid fa-angle-right"></i></a>
-                  </div>
-                  <div class="side-box-items">
-                    <div class="img-title display-flex">
-                        <img src="{{ asset('frontend/imgs/bank.png')}}" width="50" height="100%" class="img-fluid display-inline">
-                        <div class="display-inline side-box-title-text">
-                          <span class="box-title">Average Mortgage rate</span>   
-                          <span class="box-text title-with-border third">4.32%</span> 
-                        </div>
-                    </div>
-                    <a href="#"> See what the rate trend means for you <i class="fa-solid fa-angle-right"></i></a>
-                  </div>
-                  <div class="side-box-items">
-                    <div class="img-title display-flex">
-                        <img src="{{ asset('frontend/imgs/bank.png')}}" width="50" height="100%" class="img-fluid display-inline">
-                        <div class="display-inline side-box-title-text">
-                          <span class="box-title">Average Mortgage rate</span>   
-                          <span class="box-text title-with-border fourth">4.32%</span> 
-                        </div>
-                    </div>
-                    <a href="#"> See what the rate trend means for you <i class="fa-solid fa-angle-right"></i></a>
-                  </div>
               </div>
             </div>
         </div>
       </div>
     </header>
+    <section id="tab-category-section">
+      <div class="row"> 
+        <div class="col-lg-12">
+            <div id="feature-tab">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                  <h4 class="mr-1">Must Reads:</h4>
+                  @foreach($category as $cat)
+                    <li class="nav-item">
+                      <a class="nav-link  {{($loop->first)?'active':''}}" id="{{$cat->slugId}}-tab" data-toggle="tab" href="#tab-{{$cat->slugId}}" role="tab" aria-controls="{{$cat->slugId}}" aria-selected="true">{{$cat->name}}</a>
+                    </li>
+                  @endforeach
+                </ul>
+                <div class="tab-content">
+                @foreach($category as $cat)
+                  <div class="tab-pane {{($loop->first)?'active':''}}" id="tab-{{$cat->slugId}}" role="tabpanel" aria-labelledby="{{$cat->slugId}}-tab">
+                    <div class="row justify-content-center" >
+                    @foreach($blogs as $cblog)
+                     @if($cblog->categories == $cat->id)
+                        <div class="col-md-3">
+                            <div class="feature-card feature-tab">
+                              <div class="feature-card-img bg_{{$cat->id}} position-relative-custom cursor-point display-inline">
+                                <img src="{{!empty($cat->logo)? asset($cat->logo) : asset('frontend/imgs/bank-1.png')}}" width="50" class="img-fluid position-relative-custom">
+                              </div>
+                                <div class="card-title">{{$cblog->CatName->name}}</div>
+                                <a href="{{route('frontend.blog',[$cblog->id, $cblog->slug])}}" class="position-relative"><h3>{{$cblog->title}}</h3></a>
+                                <div class="card-by">
+                                  By <span>Admin</span>, {{$cblog->BlogDate}}
+                                </div>
+                            </div> 
+                        </div>
+                      @endif
+                    @endforeach
+                    </div>
+                  </div>
+                  @endforeach
+                </div>
+              </div>
+          </div>
+      </div>
+    </section>
 
     <section id="highlight-section" class="pt-5 highlight-section bg-special">
       <div class="container">
         <div class="row">
           <div class="col-lg-8 position-relative-custom">
-            <h2>We help you conquer everyday moments and milestones in your financial lives, and we take our job seriously.</h2>
+            <h2>Heading.</h2>
             <div class="row mt-4 justify-content-center">
-            @for ($i=0; $i<4; $i++) 
+            
               <div class="col-lg-6 mt-3 mb-3">
                 <div class="img-title display-flex">
                   <div class="highlight-img">
                     <img src="{{ asset('frontend/imgs/bank.png')}}" class="display-inline">
                   </div>
                   <div class="display-inline side-box-title-text ml-3 ">
-                    <h4>Heading <?php echo $i;?></h4>
+                    <h4>Mutual Funds Investment</h4>
                     <span class="box-title">We always give unbiased advice. We never recommend something we wouldn’t recommend to our friends.</span>   
                   </div>
                 </div>
               </div>
-              @endfor
-              <a href="#" class="btn-type-1 mt-4">our policies</a>
+              <div class="col-lg-6 mt-3 mb-3">
+                <div class="img-title display-flex">
+                  <div class="highlight-img">
+                    <img src="{{ asset('frontend/imgs/bank.png')}}" class="display-inline">
+                  </div>
+                  <div class="display-inline side-box-title-text ml-3 ">
+                    <h4>Tax Saving</h4>
+                    <span class="box-title">We always give unbiased advice. We never recommend something we wouldn’t recommend to our friends.</span>   
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 mt-3 mb-3">
+                <div class="img-title display-flex">
+                  <div class="highlight-img">
+                    <img src="{{ asset('frontend/imgs/bank.png')}}" class="display-inline">
+                  </div>
+                  <div class="display-inline side-box-title-text ml-3 ">
+                    <h4>Insurance</h4>
+                    <span class="box-title">We always give unbiased advice. We never recommend something we wouldn’t recommend to our friends.</span>   
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 mt-3 mb-3">
+                <div class="img-title display-flex">
+                  <div class="highlight-img">
+                    <img src="{{ asset('frontend/imgs/bank.png')}}" class="display-inline">
+                  </div>
+                  <div class="display-inline side-box-title-text ml-3 ">
+                    <h4>Stock Marketing</h4>
+                    <span class="box-title">We always give unbiased advice. We never recommend something we wouldn’t recommend to our friends.</span>   
+                  </div>
+                </div>
+              </div>
+              
+              <a href="#" class="btn-type-1 mt-4">our all services</a>
               <div class="verticle-divider"></div>
           </div>
         </div>
@@ -266,8 +206,8 @@
            @endfor
           </div>
             <div id="action-btn">
-            <a href="#" class="more-btn type-see invisible" data-content="see all"><i class="fa-solid fa-angle-right"></i></a>
-            <a href="javascript:void(0)" class="more-btn type-more" data-content="more"><i class="fa-solid fa-angle-right"></i></a>
+            <a href="#" class="more-btn type-see invisible" data-content="see all"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+            <a href="javascript:void(0)" class="more-btn type-more" data-content="more"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
             </div>
         </div>
       </div>

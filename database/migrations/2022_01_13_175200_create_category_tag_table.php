@@ -17,6 +17,7 @@ class CreateCategoryTagTable extends Migration
             $table->id();
             $table->string('name',100);
             $table->string('logo',300)->nullable();
+            $table->string('bgcolor',10)->nullable();
             $table->enum('type', ['category', 'tag']);
             $table->bigInteger('parent_id')->nullable();
             $table->string('for',20);
