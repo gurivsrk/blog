@@ -72,7 +72,12 @@ class FormController extends Controller
         $data = $request->all();
 
         if($request->hasFile('form')){
-          $data['form'] =  updateMedia( $form->form,$request->file('form'),'forms/'.$cateName->name);
+            if(!empty($form->form)){
+                $data['form'] =  updateMedia( $form->form,$request->file('form'),'forms/'.$cateName->name);
+            }
+            else{
+                $data['form'] =  addMedia($request->file('form'),'forms/'.$cateName->name);
+            }
         }
 
         $form->update($data);   

@@ -64,7 +64,7 @@
           </ul>
           <div id="header-search-bar" class="display-flex align-items-center overflow-hidden">
             <div class="toggle-child cursor-point d-block" data-id="search-bar">
-              <i class="fa-solid fa-magnifying-glass font-large"></i>
+              <i class="fa fa-search"></i>
             </div>
             <form id="search-bar" class="display-none">
               <input class="form-control me-2 display-inline inputProperty"  type="search" placeholder="Search" aria-label="Search">
@@ -136,6 +136,8 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" ></script>
     <script src="{{asset('frontend/js/less.min.js')}}" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
     <script src="{{asset('frontend/js/main.js')}}" ></script>
+    @stack('js')
   </body>
 </html>

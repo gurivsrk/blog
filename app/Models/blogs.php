@@ -6,7 +6,7 @@ use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-
+use App\Models\category;
 class blogs extends Model
 {
     use HasFactory,SoftDeletes;
@@ -46,11 +46,15 @@ class blogs extends Model
         public function CatName(){
             return $this->belongsTo('App\Models\category','categories','id');
         }
+        
+        public static function tagName($id){
+            return category::select('name')->where('id',$id)->get()->first();
+        }
 
         public static function recentPost($id){
             $blog = blogs::select('id', 'title', 'blogImage', 'created_at', 'categories', 'feature_status')->get()->last(); 
             if($blog->id == $id){
-                $blog  =  blogs::select('id', 'title', 'blogImage', 'created_at', 'categories', 'feature_status')->where('id',--$id)->get();
+                $blog  =  blogs::select('id', 'title', 'blogImage', 'created_at', 'categories', 'feature_status')->where('id',--$id)->get()->first();
             }
             return $blog;
         }

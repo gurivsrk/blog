@@ -100,6 +100,9 @@ h6{
 .pl-2{
     padding-left: 20px;
 }
+.f-24{
+    font-size: 24px;
+}
 .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
     color: #495057;
     background-color: #f1f1f1;
@@ -171,3 +174,108 @@ h6{
     from {transform: translateX(0px)}
     to {transform: translateX(45px)}
   }
+  gin: 0 auto;
+}
+
+.graph-section .graph-content .graph-box {
+  position: relative;
+}
+
+.graph-section .graph-content .graph-box::before {
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  overflow: hidden;
+  line-height: 45px;
+  background: rgba(29, 33, 36, 0.25);
+  overflow: hidden;
+}
+
+.graph-section .graph-content .graph-box figure {
+  margin-bottom: 0;
+}
+.get-range-value {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.type-input {
+  width: 100px;
+  background: #99cde2;
+  border: none;
+  padding: 5px 17px;
+  font-size: 20px;
+  color: #fff;
+}
+
+.type-span{
+    font-family: 'Roboto';
+    position: absolute;
+    z-index: 11;
+    right: 5px;
+    font-size: 22px;
+    color: #fff;
+    top: 3px;
+}
+
+.type-range {
+  margin-top: 35px;
+  -webkit-appearance: none;
+  margin-right: 15px;
+  width: 100%;
+  height: 7px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 5px;
+  background-image: linear-gradient(#3cafdc, #3cafdc);
+  background-repeat: no-repeat;
+}
+.type-range:hover,.type-range:focus, .type-input:hover, .type-input:focus  {
+  outline: none;
+  border: none;
+}
+.type-range::-webkit-slider-thumb{
+  -webkit-appearance: none;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: #fff;
+  cursor: ew-resize;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); 
+}
+.type-range::-moz-range-thumb{
+  -webkit-appearance: none;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: #fff;
+  cursor: ew-resize;
+  box-shadow: 0 0 2px 0 #555;
+}
+
+.type-range::-webkit-slider-runnable-track  {
+  -webkit-appearance: none;
+  box-shadow: none;
+  border: none;
+  background: transparent;
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.dynamic-field span {
+  font-size: 18px;
+  font-weight: 700;
+}

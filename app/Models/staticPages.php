@@ -3,10 +3,11 @@
 namespace App\Models;
 
 use Hamcrest\Type\IsString;
+use function PHPUnit\Framework\isJson;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-use function PHPUnit\Framework\isJson;
+
 
 class staticPages extends Model
 {
@@ -38,7 +39,7 @@ class staticPages extends Model
                 continue;
             }
      
-           $value = is_string($value)?$value:\json_encode($value);
+           $value = is_string($value)?$value:json_encode($value);
 
             $staticPage = self::where('page',$page)
                                 ->Where('field_name',$key)

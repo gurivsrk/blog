@@ -37,6 +37,8 @@
     hOrangeBg:#d2f7f2;
     special:#4da6d3;
     special2: #fce29c;
+    btnB: #2a71ff;
+    btnBg: #dee9ff;
 }
 
 a{
@@ -46,6 +48,14 @@ a{
 
 li{
     list-style-type: none;
+}
+.blog-title-with-border-1{
+    .blog-title-with-border();
+    background: linear-gradient(0deg, #colors[secondBg] 50%, transparent 50%);
+}
+.blog-title-with-border-2{
+    .blog-title-with-border();
+    background: linear-gradient(0deg, #colors[tertiary] 50%, transparent 50%);
 }
 .blog-title-with-border{
     background: linear-gradient(0deg, #colors[firstBg] 50%, transparent 50%);
@@ -143,6 +153,18 @@ li{
     }
 }
 
+.btn-type-primary {
+    .btn-type-1();
+    background:  #colors[btnBg];
+    color: #colors[secondary] !important;
+    &:before{
+        outline: 2px solid #colors[btnB];
+    }
+    &:hover{
+        background: rgb(77 166 211 / 100%);
+    }
+  }
+
 .btn-type-1 {
     background: rgba(255,255,255,0.2);
     transition: @tSpeed;
@@ -192,6 +214,69 @@ li{
     font-size: 10px;
 }
 
+.tag-before-after{
+    z-index: -1;
+    transform: skewX(-15deg);
+    left: 0;
+    top: 0;
+}
+.tag-bb{
+    &:before{
+        .beforeAfter();
+        background: #colors[btnBg];
+        .tag-before-after();
+    }
+    &:after{
+        .beforeAfter();
+        outline: 1px solid #colors[btnB];
+        .tag-before-after();
+        left: 5px;
+        top: 5px;
+    }
+}
+.tag-cloud-ul{
+    padding: 10px 1.5rem;
+    a {
+        display: inline-block;
+        padding: 7px 15px;
+        margin: 0 10px;
+        position: relative;
+        &:first-child{
+            margin-left: 0;
+        }
+        &:nth-child(2n+2){
+            .tag-bb();
+            &:before{
+                background: #colors[firstBg];
+            }
+            &:after{
+                outline: 1px solid #colors[firstBorder];
+            }
+        }
+        &:nth-child(2n+1){
+            .tag-bb();
+            
+        }
+        &:nth-child(2n+3){
+            .tag-bb();
+            &:before{
+                background: #colors[secondBg];
+            }
+            &:after{
+                outline: 1px solid #colors[secondBorder];
+            }
+        }
+        &:nth-child(2n+4){
+            .tag-bb();
+            &:before{
+                background: #colors[greend];
+            }
+            &:after{
+                outline: 1px solid #colors[firstTitle];
+            }
+        }
+    }
+}
 
 /******* top navbar  *******/ 
 #top-header {

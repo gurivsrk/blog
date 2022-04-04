@@ -88,7 +88,7 @@
                                         @foreach($catetag as $tag)
                                           @if($tag->type == "tag")
                                           @if(!empty($decoded_tag))
-                                              <option value="{{$tag->id}}" {{(in_array($tag->name,$decoded_tag)?'selected':'')}}>{{$tag->name}}</option>
+                                              <option value="{{$tag->id}}" {{(in_array($tag->id,$decoded_tag)?'selected':'')}}>{{$tag->name}}</option>
                                             @else
                                               <option value="{{$tag->id}}">{{$tag->name}}</option>
                                             @endif

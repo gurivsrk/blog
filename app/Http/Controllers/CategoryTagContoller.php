@@ -67,7 +67,12 @@ class CategoryTagContoller extends Controller
             $category = category::findOrFail($id);
             $data = $request->all();
             if($request->hasFile('logo')){
-                $data['logo'] =  updateMedia( $category->logo ,$request->file('logo'),'logos');
+                if(!empty($category->logo)){
+                    $data['logo'] =  updateMedia( $category->logo ,$request->file('logo'),'logos');
+                }
+                else{
+                    $data['logo'] = addMedia($request->file('logo'),'logos');
+                }
             }
             $category->update($data);
             

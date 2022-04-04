@@ -16,7 +16,7 @@ class CreateSubscriberTable extends Migration
         Schema::create('subscriber', function (Blueprint $table) {
             $table->id();
             $table->mediumText('email')->unique();
-            $table->enum('status',['pending','subscribe','unsubscribe']);
+            $table->enum('status',['pending','subscribe','unsubscribe'])->default('pending');
             $table->timestamps();
             $table->softDeletes();
         });
