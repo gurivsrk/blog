@@ -48,10 +48,10 @@ class staticPages extends Model
             if($staticPage){
                
                 if($key == 'website_logo' && $request->file('website_logo')){
-                        $value  = updateMedia($staticPage->field_value, $request->file('website_logo'),'GD');
+                        $value  = !empty($staticPage->field_value) ? updateMedia($staticPage->field_value, $request->file('website_logo'),'GD') : addMedia($request->file('website_logo'),'GD');
                 }
                 elseif($key == 'favicon' && $request->file('favicon')){
-                        $value  = updateMedia($staticPage->field_value, $request->file('favicon'),'GD');
+                        $value  = !empty($staticPage->field_value) ? updateMedia($staticPage->field_value, $request->file('favicon'),'GD') : addMedia($request->file('favicon'),'GD');
                     }
             }
             else{
