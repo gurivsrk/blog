@@ -45,7 +45,7 @@
           <ul class="navbar-nav  mb-2 mb-lg-0 "> 
           @if(!empty($menus))
             @foreach($menus as $menu) 
-              @if(@$menu->name == 'primary_menu')
+              @if(@$menu->name == 'primary_menu'  && !empty($menu->data))
                 @foreach(json_decode($menu->data) as $key => $link)
                   <li class="nav-item {{ (!empty($link->children)?'dropdown':'') }}">
                     <a class="nav-link {{ (!empty($link->children)?'dropdown-toggle':'') }}" id="{{ (!empty($link->children)?'navbarDropdown-'.++$key:'') }}" href="{{!empty($link->children)?'#':($link->href == '/'? $link->href : route('frontend.'.$link->href)) }}" {{ (!empty($link->children)?'role=button data-bs-toggle=dropdown aria-expanded=false':'') }}>{{$link->text}}</a>
@@ -59,7 +59,7 @@
                   </li>
                 @endforeach
               @endif
-            @endforeach  
+            @endforeach 
           @endif
           </ul>
           <div id="header-search-bar" class="display-flex align-items-center overflow-hidden">
@@ -87,12 +87,24 @@
               </div>
               <div id="social-section" class="col-lg-8 display-flex align-items-center ">
                 <ul id="social-link" class="link-with-title"  data-content="Follow Us">
-                  <li><a href="{{($gd->facebook_link == 'null' || $gd->facebook_link == null)?'#':$gd->facebook_link}}"> <i class="fa fa-facebook" aria-hidden="true"></i> </a></li>
-                  <li><a href="{{($gd->twitter_link == 'null' || $gd->twitter_link == null)?'#':$gd->twitter_link}}"> <i class="fa fa-twitter" aria-hidden="true"></i> </a></li>
-                  <li><a href="{{($gd->instagram_link == 'null' || $gd->instagram_link == null)?'#':$gd->instagram_link}}"> <i class="fa fa-instagram" aria-hidden="true"></i> </a></li>
-                  <li><a href="{{($gd->linkedin_link == 'null' || $gd->linkedin_link == null)?'#':$gd->linkedin_link}}"> <i class="fa fa-linkedin" aria-hidden="true"></i> </a></li>
-                  <li><a href="{{($gd->youtube_link == 'null' || $gd->youtube_link == null)?'#':$gd->youtube_link}}"> <i class="fa fa-youtube-play" aria-hidden="true"></i> </a></li>
-                  <li><a href="{{($gd->pinterest_link == 'null' || $gd->pinterest_link == null)?'#':$gd->pinterest_link}}"> <i class="fa fa-pinterest-p" aria-hidden="true"></i> </a></li>
+                @if((@$gd->facebook_link != 'null' && @$gd->facebook_link != null))
+                  <li><a href="{{@$gd->facebook_link}}"> <i class="fa fa-facebook" aria-hidden="true"></i> </a></li>
+                @endif
+                @if(@$gd->twitter_link != 'null' && @$gd->twitter_link != null)
+                  <li><a href="{{@$gd->twitter_link}}"> <i class="fa fa-twitter" aria-hidden="true"></i> </a></li>
+                @endif
+                @if(@$gd->instagram_link != 'null' && @$gd->instagram_link != null)
+                  <li><a href="{{@$gd->instagram_link}}"> <i class="fa fa-instagram" aria-hidden="true"></i> </a></li>
+                @endif
+                @if(@$gd->linkedin_link != 'null' && @$gd->linkedin_link != null)
+                  <li><a href="{{@$gd->linkedin_link}}"> <i class="fa fa-linkedin" aria-hidden="true"></i> </a></li>
+                @endif
+                @if(@$gd->youtube_link != 'null' && @$gd->youtube_link != null)
+                  <li><a href="{{@$gd->youtube_link}}"> <i class="fa fa-youtube-play" aria-hidden="true"></i> </a></li>
+                @endif
+                @if(@$gd->pinterest_link != 'null' && @$gd->pinterest_link != null)
+                  <li><a href="{{@$gd->pinterest_link}}"> <i class="fa fa-pinterest-p" aria-hidden="true"></i> </a></li>
+                @endif
                 </ul>
               </div>
             </div>
@@ -101,9 +113,9 @@
             <div class="row align-items-center" style="height: 100%">
               <div class="col-sm-6">
                   <ul id="address-info" class="link-with-title footer-menu position-relative-custom" data-content="Contact Info">
-                    <li>Email: <a href="mailto:{{$gd->website_email_primary}}">{{$gd->website_email_primary}}</a></li>
-                    <li>Contact No.: <a href="tel:{{$gd->website_phone_primary}}">{{$gd->website_phone_primary}}</a></li>
-                    <li>Address: {{$gd->office_location}}</li>
+                    <li>Email: <a href="mailto:{{@$gd->website_email_primary}}">{{@$gd->website_email_primary}}</a></li>
+                    <li>Contact No.: <a href="tel:{{@$gd->website_phone_primary}}">{{@$gd->website_phone_primary}}</a></li>
+                    <li>Address: {{@$gd->office_location}}</li>
                   </ul>
               </div>
               <div class="col-sm-6">

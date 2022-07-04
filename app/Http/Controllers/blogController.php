@@ -74,7 +74,7 @@ class blogController extends Controller
         $data = $request->all();
 
         if($request->hasFile('blogImage')){  
-           $data['blogImage'] =  updateMedia( $blogs->blogImage, $request->file('blogImage'),'blog_images');
+           $data['blogImage'] = !empty($blogs->blogImage) ? updateMedia( $blogs->blogImage, $request->file('blogImage'),'blog_images') : addMedia($request->file('blogImage'),'blog_images');;
         }
         
         $blogs->update($data);
